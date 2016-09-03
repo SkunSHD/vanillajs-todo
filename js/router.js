@@ -2,6 +2,7 @@
     'use strict';
     
     var Router = {
+        flag: true,
         routes: [],
         mode: null,
         root: '/',
