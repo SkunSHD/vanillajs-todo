@@ -20,7 +20,7 @@
 	var todo = new Todo('todos-vanillajs');
 
 	function setView() {
-		todo.controller.setView(document.location.hash);
+		todo.controller.setView(document.location.hash)
 	}
     
     function setRouter() {
