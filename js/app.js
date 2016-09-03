@@ -14,7 +14,7 @@
 		this.view = new app.View(this.template);
 		this.controller = new app.Controller(this.model, this.view);
         
-		this.router = app.Router();
+		this.router = app.Router;
 	}
 
 	var todo = new Todo('todos-vanillajs');
