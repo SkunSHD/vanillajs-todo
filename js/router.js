@@ -88,4 +88,4 @@
     // Export to window
     window.app = window.app || {};
     window.app.Router = Router;
-}(window);
+})(window);
