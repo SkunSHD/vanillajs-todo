@@ -27,8 +27,7 @@
         
         // configuration
         todo.router.config({
-            mode: 'history',
-            root: 'https://skunshd.github.io/vanillajs-todo/'
+            mode: 'history'
         });
         
         // returning the user to the initial state
