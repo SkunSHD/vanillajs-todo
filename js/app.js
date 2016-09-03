@@ -21,37 +21,42 @@
 
 	function setView() {
 		todo.controller.setView(document.location.hash);
-		setRouter();
+		
+		// Router initialisation
+		if(flag) {
+			setRouter();
+		}
 	}
     
-    function setRouter() {
-        
-        // configuration
-        todo.router.config({
-            mode: 'history',
-            root: 'vanillajs-todo'
-        });
-        
-        // returning the user to the initial state
-        todo.router.navigate();
-        
-        // adding routes
-        todo.router
-        .add(/about/, function() {
-            console.log('about');
-        })
-        .add(/products\/(.*)\/edit\/(.*)/, function() {
-            console.log('products', arguments);
-        })
-        .add(function() {
-            console.log('default');
-        })
-        .check('/products/12/edit/22').listen();
+	function setRouter() {
+	    todo.router.flag = false;
 
-        // forwarding
-        todo.router.navigate('/about');       
-        
-    }
+		// configuration
+		todo.router.config({
+		    mode: 'history',
+		    root: 'vanillajs-todo'
+		});
+		
+		// returning the user to the initial state
+		todo.router.navigate();
+		
+		// adding routes
+		todo.router
+		.add(/about/, function() {
+		    console.log('about');
+		})
+		.add(/products\/(.*)\/edit\/(.*)/, function() {
+		    console.log('products', arguments);
+		})
+		.add(function() {
+		    console.log('default');
+		})
+		.check('/products/12/edit/22').listen();
+		
+		// forwarding
+		todo.router.navigate('/about');    
+	        
+	}
     
 	$on(window, 'load', setView);
 	$on(window, 'hashchange', setView);
