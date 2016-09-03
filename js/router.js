@@ -57,7 +57,7 @@
                 if(match) {
                     match.shift();
                     // this.routes[i].handler.apply({}, match);
-                    this.routes[i].handler.(match);
+                    this.routes[i].handler(match);
                     return this;
                 }           
             }
