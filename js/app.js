@@ -52,6 +52,6 @@
         
     }
     
-	$on(window, 'load', setView, setRouter);
+	$on(window, 'load', setView);
 	$on(window, 'hashchange', setView);
 })();
