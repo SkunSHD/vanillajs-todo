@@ -23,7 +23,7 @@
 		todo.controller.setView(document.location.hash);
 		
 		// Router initialisation
-		if(flag) {
+		if(todo.router.flag) {
 			setRouter();
 		}
 	}
