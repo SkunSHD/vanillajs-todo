@@ -20,21 +20,23 @@
 	var todo = new Todo('todos-vanillajs');
 
 	function setView() {
-		todo.controller.setView(document.location.hash)
+		todo.controller.setView(document.location.hash);
+		setRouter();
 	}
     
     function setRouter() {
         
         // configuration
         todo.router.config({
-            mode: 'history'
+            mode: 'history',
+            root: 'vanillajs-todo'
         });
         
         // returning the user to the initial state
         todo.router.navigate();
         
         // adding routes
-        Router
+        todo.router
         .add(/about/, function() {
             console.log('about');
         })
@@ -47,7 +49,7 @@
         .check('/products/12/edit/22').listen();
 
         // forwarding
-        Router.navigate('/about');       
+        todo.router.navigate('/about');       
         
     }
     
