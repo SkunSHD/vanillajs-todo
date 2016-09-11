@@ -43,7 +43,6 @@
 		})
 		.listen();
 		
-		todo.router.navigate('/details');
 		
 		
 		// Test code below
