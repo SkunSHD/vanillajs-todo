@@ -52,10 +52,12 @@
 		    console.log('default');
 		})
 		.listen();
+		
+		// Test methods below
 		// .check('/products/12/edit/22').listen();
 		
 		// forwarding
-		todo.router.navigate('/about');    
+		// todo.router.navigate('/about');    
 	        
 	}
     
