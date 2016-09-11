@@ -51,7 +51,8 @@
 		.add(function() {
 		    console.log('default');
 		})
-		.check('/products/12/edit/22').listen();
+		.listen();
+		// .check('/products/12/edit/22').listen();
 		
 		// forwarding
 		todo.router.navigate('/about');    
