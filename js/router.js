@@ -2,6 +2,7 @@
     'use strict';
     
     var Router = {
+        flag: true,
         routes: [],
         mode: null,
         root: '/',
@@ -56,6 +57,7 @@
                 if(match) {
                     match.shift();
                     this.routes[i].handler.apply({}, match);
+                    // this.routes[i].handler(match);
                     return this;
                 }           
             }
