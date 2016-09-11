@@ -25,6 +25,7 @@
 		this.$footer = qs('.footer');
 		this.$toggleAll = qs('.toggle-all');
 		this.$newTodo = qs('.new-todo');
+        this.$todoDetails = qs('.todo-details');
 	}
 
 	View.prototype._removeItem = function (id) {
@@ -91,6 +92,12 @@
 			label.textContent = title;
 		});
 	};
+    
+    View.prototype._editItemDetails = function (parameter) {
+        this.$todoDetails.style.display = parameter;
+
+		document.forms.details.firstName.focus();
+    };
 
 	View.prototype.render = function (viewCmd, parameter) {
 		var self = this;
@@ -127,7 +134,10 @@
 			},
 			editItemDone: function () {
 				self._editItemDone(parameter.id, parameter.title);
-			}
+			},
+            editItemDetails: function () {
+               self._editItemDetails(parameter);
+            }
 		};
 
 		viewCommands[viewCmd]();
@@ -210,7 +220,16 @@
 
 		} else if (event === 'itemEditCancel') {
 			self._bindItemEditCancel(handler);
-		}
+            
+		} else if (event === 'itemEditDetails') {
+            $delegate(self.$todoList, '.edit-full', 'click', function () {
+                handler(self.$todoDetails.style.display);
+            });
+        } else if (event === 'itemEditDetailsCancel') {
+            $delegate(self.$todoDetails, '.edit-details-cancel', 'click', function () {
+                handler(self.$todoDetails.style.display);
+            });
+        }
 	};
 
 	// Export to window

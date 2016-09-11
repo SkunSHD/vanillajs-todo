@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<section class="todoapp">
+        
 			<header class="header">
 				<h1>todos</h1>
 				<input class="new-todo" placeholder="What needs to be done?" autofocus>
@@ -16,6 +17,16 @@
 				<input class="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
 				<ul class="todo-list"></ul>
+                <ul class="todo-details">
+                    <form name="details">
+                        <div>
+                            <label for="firstName">First name</label>
+                            <input type="text" name="firstName">
+                            <label class="edit-details-cancel">X</label>
+                        </div>
+                        
+                    </form>
+                </ul>
 			</section>
 			<footer class="footer">
 				<span class="todo-count"></span>
@@ -33,7 +44,7 @@
 				<button class="clear-completed">Clear completed</button>
 			</footer>
 		</section>
-		<footer class="info">
+        <footer class="info">
 			<p>Double-click to edit a todo</p>
 			<p>Created by <a href="http://twitter.com/oscargodson">Oscar Godson</a></p>
 			<p>Refactored by <a href="https://github.com/cburgmer">Christoph Burgmer</a></p>

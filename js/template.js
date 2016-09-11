@@ -35,6 +35,7 @@
 		+		'<div class="view">'
 		+			'<input class="toggle" type="checkbox" {{checked}}>'
 		+			'<label>{{title}}</label>'
+        +           '<button class="edit-full"></button>'
 		+			'<button class="destroy"></button>'
 		+		'</div>'
 		+	'</li>';

@@ -44,6 +44,14 @@
 		self.view.bind('toggleAll', function (status) {
 			self.toggleAll(status.completed);
 		});
+        
+        self.view.bind('itemEditDetails', function (parameter) {
+            self.editItemFull(parameter);
+        });
+        
+        self.view.bind('itemEditDetailsCancel', function (parameter) {
+            self.editItemFull(parameter);
+        });
 	}
 
 	/**
@@ -140,6 +148,22 @@
 			self.view.render('editItemDone', {id: id, title: data[0].title});
 		});
 	};
+    
+    /*
+    * Triggers the detaile editing mode.
+    */
+    
+    Controller.prototype.editItemFull = function (parameter) {
+        var self = this;
+        
+        if (parameter === '' || parameter === 'none') {
+            parameter = 'block';
+        } else {
+            parameter = 'none';
+        }
+        
+        self.view.render('editItemDetails', parameter);
+    };
 
 	/**
 	 * By giving it an ID it'll find the DOM element matching that ID,
