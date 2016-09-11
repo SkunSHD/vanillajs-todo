@@ -12,8 +12,9 @@
 	     *   - render(command, parameterObject)
 	     *     Renders the given command with the options
 	     */
-	function View(template) {
+	function View(template, router) {
 		this.template = template;
+		this.router = router;
 
 		this.ENTER_KEY = 13;
 		this.ESCAPE_KEY = 27;
@@ -93,11 +94,15 @@
 		});
 	};
     
-    View.prototype._editItemDetails = function (parameter) {
-        this.$todoDetails.style.display = parameter;
-
-		document.forms.details.firstName.focus();
-    };
+	View.prototype._editItemDetails = function (parameter) {
+		this.$todoDetails.style.display = parameter;
+		if (parameter === 'block') {
+			document.forms.details.firstName.focus();
+			this.router.navigate('/details');
+		} else {
+			this.router.navigate('');
+		}
+	};
 
 	View.prototype.render = function (viewCmd, parameter) {
 		var self = this;
