@@ -79,7 +79,7 @@
         navigate: function(path) {
             path = path ? path : '';
             if(this.mode === 'history') {
-                history.pushState(null, null, this.root + this.clearSlashes(path));
+                history.pushState(null, null, this.root + this.clearSlashes(path) + window.location.hash);
             } else {
                 window.location.href = window.location.href.replace(/#(.*)$/, '') + '#' + path;
             }
