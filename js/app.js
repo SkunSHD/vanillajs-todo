@@ -41,30 +41,6 @@
 			console.log('/details');
 		})
 		.listen();
-		
-		
-		
-		// Test code below
-		// returning the user to the initial state
-		// todo.router.navigate(/about);
-		
-		// adding routes
-		// todo.router
-		// .add(/about/, function() {
-		//     console.log('about');
-		// })
-		// .add(/products\/(.*)\/edit\/(.*)/, function() {
-		//     console.log('products', arguments);
-		// })
-		// .add(function() {
-		//     console.log('default');
-		// })
-		// .check('/products/12/edit/22').listen()
-		// .listen();
-		
-		// forwarding
-		// todo.router.navigate('/about');    
-	        
 	}
     
 	$on(window, 'load', setView);
