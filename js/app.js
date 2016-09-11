@@ -39,7 +39,7 @@
 		
 		todo.router
 		.add(/details/, function() {
-			console.log(/details);
+			console.log('/details');
 		})
 		.listen();
 		
