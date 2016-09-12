@@ -104,22 +104,9 @@
         form.firstName.focus();
         
         this.router.navigate('/details');
-        
-        
-		// this.$todoDetails.style.display = parameter;
-		//if (parameter === 'block') {
-        //      document.forms.details.firstName.focus();
-        //      this.router.navigate('/details');
-		//} else {
-		//	this.router.navigate('');
-		//}
 	};
     
     View.prototype._editItemDetailsDone = function (id, title) {
-        // найи form-datails dataset, проверить найден ли элемент
-        
-        // var form = qs('.todo-details [data-id="' + id + ']"');
-        
         var detailsList = qs('.todo-details');
         
         if (!detailsList) {
@@ -127,6 +114,7 @@
         }
         
         detailsList.style.display = 'none';
+        this.router.navigate('');
     };
 
 	View.prototype.render = function (viewCmd, parameter) {
