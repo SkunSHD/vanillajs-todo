@@ -45,12 +45,12 @@
 			self.toggleAll(status.completed);
 		});
         
-        self.view.bind('itemEditDetails', function (parameter) {
-            self.editItemFull(parameter);
+        self.view.bind('itemEditDetails', function (item) {
+            self.editItemFull(item.id);
         });
         
-        self.view.bind('itemEditDetailsCancel', function (parameter) {
-            self.editItemFull(parameter);
+        self.view.bind('itemEditDetailsCancel', function (item) {
+            self.editItemFullCancel(item.id);
         });
 	}
 
@@ -150,19 +150,27 @@
 	};
     
     /*
-    * Triggers the detaile editing mode.
+    * Triggers the detail editing mode.
     */
     
-    Controller.prototype.editItemFull = function (parameter) {
+    Controller.prototype.editItemFull = function (id) {
         var self = this;
         
-        if (parameter === '' || parameter === 'none') {
-            parameter = 'block';
-        } else {
-            parameter = 'none';
-        }
+        self.model.read(id, function (data) {
+            self.view.render('editItemDetails', {id: id, title: data[0].title});
+        });
+    };
+    
+    /*
+    * Cancels the detail editing mode.
+    */
+    
+    Controller.prototype.editItemFullCancel = function (id) {
+        var self = this;
         
-        self.view.render('editItemDetails', parameter);
+        self.model.read(id, function (data) {
+            self.view.render('editItemDetailsDone', {id: id, title: data[0].title});
+        });
     };
 
 	/**

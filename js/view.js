@@ -94,15 +94,40 @@
 		});
 	};
     
-	View.prototype._editItemDetails = function (parameter) {
-		this.$todoDetails.style.display = parameter;
-		if (parameter === 'block') {
-			document.forms.details.firstName.focus();
-			this.router.navigate('/details');
-		} else {
-			this.router.navigate('');
-		}
+	View.prototype._editItemDetails = function (id, title) {
+        this.$todoDetails.style.display = 'block';
+        
+		var form = document.forms.details;
+        
+        form.dataset.id = id;
+        form.firstName.value = title;
+        form.firstName.focus();
+        
+        this.router.navigate('/details');
+        
+        
+		// this.$todoDetails.style.display = parameter;
+		//if (parameter === 'block') {
+        //      document.forms.details.firstName.focus();
+        //      this.router.navigate('/details');
+		//} else {
+		//	this.router.navigate('');
+		//}
 	};
+    
+    View.prototype._editItemDetailsDone = function (id, title) {
+        // найи form-datails dataset, проверить найден ли элемент
+        
+        // var form = qs('.todo-details [data-id="' + id + ']"');
+        
+        var detailsList = qs('.todo-details');
+        
+        if (!detailsList) {
+            return;
+        }
+        
+        detailsList.style.display = 'none';
+    };
 
 	View.prototype.render = function (viewCmd, parameter) {
 		var self = this;
@@ -141,7 +166,10 @@
 				self._editItemDone(parameter.id, parameter.title);
 			},
             editItemDetails: function () {
-               self._editItemDetails(parameter);
+               self._editItemDetails(parameter.id, parameter.title);
+            },
+            editItemDetailsDone: function () {
+                self._editItemDetailsDone(parameter.id, parameter.title);
             }
 		};
 
@@ -228,7 +256,7 @@
             
 		} else if (event === 'itemEditDetails') {
             $delegate(self.$todoList, '.edit-full', 'click', function () {
-                handler(self.$todoDetails.style.display);
+                handler({id: self._itemId(this)});
             });
         } else if (event === 'itemEditDetailsCancel') {
             $delegate(self.$todoDetails, '.edit-details-cancel', 'click', function () {
